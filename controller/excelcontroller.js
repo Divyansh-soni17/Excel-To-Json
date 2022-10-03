@@ -1,7 +1,7 @@
 import excelModel from "../Model/excelSchema.js";
 import XLSX from "xlsx";
-
-
+import async from "async";
+ 
 export const homepage = async (req, res) => {
   excelModel.find((err, data) => {
     if (err) {
@@ -24,13 +24,14 @@ export const exceltojson = (req, res) => {
   sheet_namelist.forEach((element) => {
     var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_namelist[x]]);
 
-    xlData.forEach(async (item) => {
+    //Using async.eachSeries 
+    async.eachSeries(xlData,async (item) => {
       let user = await excelModel.find({ email: item.email });
       if (!user[0]) {
         await excelModel.create(item);
         console.log(item);
       }
-    });
+    })
     x++;
   });
 
