@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ExcelToDb</title>
+    <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+      .top {
+        padding: 1px;
+        padding-left: 10px;
+        background-color: orange;
+      }
+      .candidates {
+        padding: 10px;
+        margin-left: 50px;
+      }
+      .mainitem {
+        border: 3px dotted rgba(65, 64, 64, 0.219);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+        margin: 20px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      input[type="submit"] {
+        padding: 3px;
+        background-color: rgb(64, 175, 64);
+        padding: 10px;
+        border-radius: 15%;
+        border: none;
+        width: 50%;
+        margin-left: 20px;
+        color: white;
+      }
+      input[type="file"] {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <h2>Add from Excel</h2>
+    </div>
+    <div class="candidates">
+      <p>Add Candidates to Database</p>
+    </div>
+    <div class="mainitem">
+      <form action="/" method="POST" enctype="multipart/form-data">
+        <div class="form">
+          <input type="file" class="form-control" name="excel" required />
+          <br /><br />
+          <input type="submit" value="submit" onclick="success()" />
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function success() {
+        alert("Data submitted successfully");
+      }
+    </script>
+  </body>
+</html>
